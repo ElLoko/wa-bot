@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+node_modules/      export-ignore
+qr-code/           export-ignore
+baileys.json       export-ignore
+

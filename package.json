@@ -1,0 +1,19 @@
+{
+  "name": "wabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Souza",
+  "license": "ISC",
+  "dependencies": {
+    "@adiwajshing/baileys": "github:WhiskeySockets/Baileys",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "fs": "^0.0.1-security",
+    "node-cache": "^5.1.2",
+    "pino": "^8.11.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
