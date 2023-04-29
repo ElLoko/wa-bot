@@ -95,6 +95,7 @@ const {
 			console.log("")
 		 })
 
+		 
 	// sock.ev.on('messages.upsert', async (m) =>  { 
 	// 	logLine("wpp antigo")
 	// 	console.log(m)
