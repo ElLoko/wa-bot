@@ -8,7 +8,9 @@ const {
   const P = require('pino');
   const fs = require('fs');
   const NodeCache = require('node-cache');
-  
+
+  const user = require(__dirname + '/src/user.js')
+
   function logLine(str) {
 	const err = new Error();
 	const callerLine = err.stack.split("\n")[2];
@@ -88,12 +90,27 @@ const {
 			console.log("---------------------------------------------------")
 			console.log("id: " + id)
 			console.log("---------------------------------------------------")
-			console.log("msg: " + msg)
-			console.log("---------------------------------------------------")
 			console.log("numero: " + numero)
 			console.log("---------------------------------------------------")
 			console.log("")
 		 })
+
+		 // VERIFICAR CONTA
+		 	// SE TIVER
+		 		// ENVIAR O MENU
+			//SENAO
+		 		// CRIAR CONTA
+				// ENVIAR MENU
+		
+		// VERIFICAR QUAL OPÇÃO DO MENU QUE ELE CLICOU (>0) & (9<)
+		 	// SE FOR DIFERENTE DE 4
+				// ENVIAR A MENSAGEM DO SUBMENU
+				// BLOQUEAR MENU PARA DIGITAR O 0 PRA VOLTAR
+			// SE FOR 4
+		 		// BLOQUEAR MENU GERAL
+				// ENVIAR UM MENU
+		 			// VERIFICAR QUAL OPÇÃO DESEJA DO MENU
+		 				// ENVIAR MENSAGEM DO MENU + MENSAGEM ANTERIOR
 
 		 
 	// sock.ev.on('messages.upsert', async (m) =>  { 
