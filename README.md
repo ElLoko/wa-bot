@@ -20,7 +20,7 @@ Para realizar o download do software utilizando o comando git, é necessário se
 1.  Abra o terminal ou prompt de comando.
 2.  Digite o seguinte comando para clonar o repositório:
 ```
-git clone <URL_do_repositório>
+git clone https://github.com/ElLoko/wa-bot
 ``` 
 3.  Depois de baixado, acesse a pasta do projeto utilizando o seguinte comando:
 ```
