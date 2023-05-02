@@ -1,18 +1,54 @@
-menu: Olá, eu sou uma inteligência artificial responsável pelo atendimento da escola. Como posso ajudar você hoje?
+menu:
+Olá, eu sou uma inteligência artificial responsável pelo atendimento da escola. Como posso ajudar você hoje?
 
 Para agilizar o processo, por favor escolha uma das opções a seguir:
 *1* - Vagas
-*2* - Horário de saída
-*3* - Assinaturas
-*4* - Transferência
-*5* - Outros
+*2* - Dlecaração Escolar
+*3* - Historico Escolar
+*4* - Login e Senhas de App's
+*5* - Boletim
+*6* - Liberar aluno mais cedo
+*7* - Coordenação
+*8* - Pedagogia
+*9* - Falar com a Secretaria
   
 Por favor, selecione a opção que melhor atende às suas necessidades e vamos prosseguir com o atendimento. Estou aqui para ajudar!
 
 
-op2: 
-água
-suco
-refrigerante
+op1: 
+Por favor, solicitamos que se dirija à secretaria da escola em horário comercial, das 07:00 às 18:00, para obter informações adicionais. Agradecemos pela compreensão e colaboração.
 
-op3: café
+op2:
+Prezado(a),
+
+Gostaríamos de informar que, para realizar solicitações, é necessário comparecer pessoalmente ao balcão da secretaria durante o horário de funcionamento, que é das 07:00 às 18:00.
+
+op3:
+Gostaríamos de informar que, para solicitação de histórico ou certificado, é necessário preencher o formulário disponível no seguinte link: [INSERIR LINK].
+
+Assim que finalizar, digite *9* para concluir.
+*OBS:* Se apenas mandar o formulário e não concluir, a solicitação irá ser negada.
+
+op4:
+Por favor, informe o nome do sistema para o qual deseja redefinir a senha:
+1 - SEGES
+2 - Google Sala de Aula
+
+op5:
+Para visualização do boletim é necessário acessar o seges...
+
+op6:
+A fim de garantir a segurança e bem-estar dos nossos alunos, informamos que a liberação dos mesmos somente poderá ser efetuada mediante a presença do responsável legal. Dessa forma, solicitamos que o responsável compareça à escola para acompanhar o processo de liberação. Agradecemos a compreensão e colaboração.
+
+op7:
+Informamos que o atendimento da coordenação está disponível diariamente, no turno correspondente ao horário de estudo do aluno. Caso seja necessário entrar em contato com a coordenação, favor comparecer à secretaria da escola no horário de funcionamento ou agendar um horário diretamente com a coordenação.
+
+op8:
+Gostaríamos de informar que o atendimento da equipe de pedagogia ocorre diariamente no turno em que o(a) aluno(a) estuda. Caso haja alguma dúvida ou necessidade de acompanhamento, solicitamos que se dirija à secretaria da escola para mais informações.
+
+op9:
+Por favor, entre em contato através do telefone nº...
+
+
+
+op1000: NAO DELETE ESSA LINHA

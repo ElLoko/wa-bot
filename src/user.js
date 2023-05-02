@@ -44,7 +44,6 @@ const ver = (sender, opcao) => {
             indice = i;
         };
     });
-    console.log(typeof indice)
     if (typeof indice === 'boolean') return false;
 
     if (opcao === "menu") {

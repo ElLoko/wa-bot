@@ -28,14 +28,18 @@ const texto =  (sock, numero, opcao) => {
           console.error(err);
           return;
         }
-
-        const regex = new RegExp(`${opcao}:\\s*([\\s\\S]*?)(?=op\\d|\\n\\n)`, 'g');
+        const menu = opcao.includes("menu")
+        const regex = menu ? new RegExp(`menu:\\s*([\\s\\S]*?)(?=op\\d|\\n\\n)`, 'g') : new RegExp(`op${opcao}:\\s*([\\s\\S]*?)(?=op\\d|\\n\\n)`, 'g');
         const match = regex.exec(data);
         
         if (match) {
           sock.sendMessage(numero, {text: match[1].trim()})
+          if (menu) return
+          setTimeout(() => {
+            sock.sendMessage(numero, {text: "Digite *0* para voltar"})
+          }, 2000);
         } else {
-          sock.sendMessage(numero, {text: 'Opção não encontrada'});
+          //sock.sendMessage(numero, {text: 'Opção não encontrada'});
         }
       });
 return true 

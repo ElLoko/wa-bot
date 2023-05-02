@@ -105,12 +105,13 @@ const {
 			console.log("---------------------------------------------------")
 			console.log("")
 
-
 			if (!user.conta(numero, "verificar")) return user.conta(numero, "criar") && enviar.texto(sock, numero, "menu");
 			if (user.ver(numero, "menu")) {
 				enviar.opcoes().then((resultado) => {
-					if (msg > 0 && msg <= resultado) {
-						sock.sendMessage(numero, {text: "Opção correta"});
+					console.log(msg > 0 && msg < (resultado+1))
+					if (msg > 0 && msg < (resultado+1)) {
+						enviar.texto(sock, numero, msg)
+						// sock.sendMessage(numero, {text: "Opção correta"});
 					} else {
 						sock.sendMessage(numero, {text: "Opção errada"});
 					};
