@@ -87,6 +87,7 @@ const {
 		const numero = info.key.participant || info.key?.remoteJid;
 		const type = Object.keys(info.message)[0] == 'senderKeyDistributionMessage' ? Object.keys(info.message)[2] : (Object.keys(info.message)[0] == 'messageContextInfo') ? Object.keys(info.message)[1] : Object.keys(info.message)[0]
 		if (!numero.includes("5527999390624")) return
+		if (type == "reactionMessage") return
 
 		// --------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -95,7 +96,7 @@ const {
 		}
 
 		
-		console.log("")
+			console.log("")
 			console.log("---------------------------------------------------")
 			console.log("type: " + type)
 			console.log("---------------------------------------------------")
@@ -105,19 +106,57 @@ const {
 			console.log("---------------------------------------------------")
 			console.log("")
 
-			if (!user.conta(numero, "verificar")) return user.conta(numero, "criar") && enviar.texto(sock, numero, "menu");
+			const opcmenu = user.ver(numero, "opcmenu");
+			if (!user.conta(numero, "verificar")) return user.conta(numero, "criar") && enviar.texto(sock, numero, "menu", info);
 			if (user.ver(numero, "menu")) {
-				enviar.opcoes().then((resultado) => {
-					console.log(msg > 0 && msg < (resultado+1))
+				enviar.opcoes().then(async (resultado) => {
+
 					if (msg > 0 && msg < (resultado+1)) {
-						enviar.texto(sock, numero, msg)
+						await enviar.texto(sock, numero, msg, info);
+						await user.set(numero, "menu", false);
+						await user.set(numero, "opcmenu", Number(msg));
 						// sock.sendMessage(numero, {text: "Opção correta"});
 					} else {
-						sock.sendMessage(numero, {text: "Opção errada"});
+						await sock.sendMessage(numero, {text: "Opção errada"});
 					};
-				  }).catch((erro) => {
-					sock.sendMessage(numero, {text: "Aconteceu algum erro no sistema."});
-				  });
+				}).catch(async (erro) => {
+					await sock.sendMessage(numero, {text: "Aconteceu algum erro no sistema."});
+				});
+				// AQUI É O SISTEMA QUE IRÁ RETORNAR DA OPÇÃO PARA O MENU PRINCIPAL CASO NÃO FOR A QUESTÃO 3 ou 4
+			} else if (opcmenu !== 3 && opcmenu !== 4) {
+				if (msg != 0) return;
+				await user.set(numero, "menu", true);
+				await user.set(numero, "opcmenu", 0);
+				setTimeout( async () => {
+					await enviar.texto(sock, numero, "menu", info);
+				}, 2000);
+				// SE FOR A QUESTÃO 3 (A QUESTÃO 3 TEM QUE CONFIRMAR O FORMULARIO)
+			} else if (opcmenu == 3) {
+				if (msg == 9) {
+					await sock.sendMessage(numero, {text: "Sua solicitação para o histórico ou certificado foi conclúido com sucesso.\nAgora ele estará pronto em até X dias úteis.\n\nSua sessão será terminada."}, {quoted: info});
+					await user.conta(numero, "deletar");
+				} else if (msg == 0) {
+					await user.set(numero, "menu", true);
+					await user.set(numero, "opcmenu", 0);
+					setTimeout( async () => {
+						await enviar.texto(sock, numero, "menu", info);
+					}, 2000);
+				};
+				// SE FOR A  QUESTÃO 4
+
+				// É PRECISO CRIAR UM lerTexto igual as opçoes do menu
+			} if (opcmenu == 4) {
+				if (msg == 9) {
+					await sock.sendMessage(numero, {text: "Sua solicitação para o histórico ou certificado foi conclúido com sucesso.\nAgora ele estará pronto em até X dias úteis.\n\nSua sessão será terminada."}, {quoted: info});
+					await user.conta(numero, "deletar");
+				} else if (msg == 0) {
+					await user.set(numero, "menu", true);
+					await user.set(numero, "opcmenu", 0);
+					setTimeout( async () => {
+						await enviar.texto(sock, numero, "menu", info);
+					}, 2000);
+				};
+
 			};
 			//
 			// VERIFICAR CONTA

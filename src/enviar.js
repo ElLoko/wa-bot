@@ -22,7 +22,7 @@ var dirTexto = __dirname + '/txt/menu.txt';
     });
   };
 
-const texto =  (sock, numero, opcao) => {
+const texto =  (sock, numero, opcao, info) => {
     fs.readFile(dirTexto, 'utf-8', (err, data) => {
         if (err) {
           console.error(err);
@@ -33,7 +33,7 @@ const texto =  (sock, numero, opcao) => {
         const match = regex.exec(data);
         
         if (match) {
-          sock.sendMessage(numero, {text: match[1].trim()})
+          sock.sendMessage(numero, {text: match[1].trim()}, {quoted: info})
           if (menu) return
           setTimeout(() => {
             sock.sendMessage(numero, {text: "Digite *0* para voltar"})
