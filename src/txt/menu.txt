@@ -1,6 +1,18 @@
-op1: leite  
+menu: Olá, eu sou uma inteligência artificial responsável pelo atendimento da escola. Como posso ajudar você hoje?
+
+Para agilizar o processo, por favor escolha uma das opções a seguir:
+*1* - Vagas
+*2* - Horário de saída
+*3* - Assinaturas
+*4* - Transferência
+*5* - Outros
+  
+Por favor, selecione a opção que melhor atende às suas necessidades e vamos prosseguir com o atendimento. Estou aqui para ajudar!
+
+
 op2: 
 água
 suco
 refrigerante
+
 op3: café

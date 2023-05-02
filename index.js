@@ -80,6 +80,7 @@ const {
 		const info = m.messages[0]
 		if (!info.message) return 
 		if (info.key && info.key.remoteJid == 'status@broadcast') return
+		if (info.key.fromMe) return 
 		
 		const msg = info.message.extendedTextMessage?.text || info.message?.conversation;
 		const id = info.key?.remoteJid || info.key.participant;
@@ -105,7 +106,18 @@ const {
 			console.log("")
 
 
-			//if (!user.conta(numero, "verificar")) user.conta(numero, "criar")
+			if (!user.conta(numero, "verificar")) return user.conta(numero, "criar") && enviar.texto(sock, numero, "menu");
+			if (user.ver(numero, "menu")) {
+				enviar.opcoes().then((resultado) => {
+					if (msg > 0 && msg <= resultado) {
+						sock.sendMessage(numero, {text: "Opção correta"});
+					} else {
+						sock.sendMessage(numero, {text: "Opção errada"});
+					};
+				  }).catch((erro) => {
+					sock.sendMessage(numero, {text: "Aconteceu algum erro no sistema."});
+				  });
+			};
 			//
 			// VERIFICAR CONTA
 				// SE TIVER
