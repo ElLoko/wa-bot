@@ -130,7 +130,7 @@ const {
 				setTimeout( async () => {
 					await enviar.texto(sock, numero, "menu", info);
 				}, 2000);
-				// SE FOR A QUESTÃO 3 (A QUESTÃO 3 TEM QUE CONFIRMAR O FORMULARIO)
+				// SE FOR A QUESTÃO 3 (A QUESTÃO 3 TEM QUE CONFIRMAR O FORMULARIO) // OK
 			} else if (opcmenu == 3) {
 				if (msg == 9) {
 					await sock.sendMessage(numero, {text: "Sua solicitação para o histórico ou certificado foi conclúido com sucesso.\nAgora ele estará pronto em até X dias úteis.\n\nSua sessão será terminada."}, {quoted: info});
@@ -142,12 +142,14 @@ const {
 						await enviar.texto(sock, numero, "menu", info);
 					}, 2000);
 				};
-				// SE FOR A  QUESTÃO 4
 
-				// É PRECISO CRIAR UM lerTexto igual as opçoes do menu
+				// SE FOR A  QUESTÃO 4
 			} if (opcmenu == 4) {
-				if (msg == 9) {
-					await sock.sendMessage(numero, {text: "Sua solicitação para o histórico ou certificado foi conclúido com sucesso.\nAgora ele estará pronto em até X dias úteis.\n\nSua sessão será terminada."}, {quoted: info});
+				if (msg == 1) {
+					await sock.sendMessage(numero, {text: "Para realizar o reset da senha do SEGES, segue o passo-a-passo desse vídeo abaixo.\n*Link:* www.gabrielsouza.com/seges"}, {quoted: info});
+					await user.conta(numero, "deletar");
+				} else if (msg == 2) {
+					await sock.sendMessage(numero, {text: "Para realizar o reset da senha do Google Sala de Aula, segue o passo-a-passo desse vídeo abaixo.\n*Link:* www.gabrielsouza.com/saladeaula"}, {quoted: info});
 					await user.conta(numero, "deletar");
 				} else if (msg == 0) {
 					await user.set(numero, "menu", true);
@@ -158,23 +160,13 @@ const {
 				};
 
 			};
-			//
-			// VERIFICAR CONTA
-				// SE TIVER
-					// ENVIAR O MENU
-			   //SENAO
-					// CRIAR CONTA
-				   // ENVIAR MENU
-		   
-		   // VERIFICAR QUAL OPÇÃO DO MENU QUE ELE CLICOU (>0) & (9<)
-				// SE FOR DIFERENTE DE 4
-				   // ENVIAR A MENSAGEM DO SUBMENU
-				   // BLOQUEAR MENU PARA DIGITAR O 0 PRA VOLTAR
-			   // SE FOR 4
-					// BLOQUEAR MENU GERAL
-				   // ENVIAR UM MENU
-						// VERIFICAR QUAL OPÇÃO DESEJA DO MENU
-							// ENVIAR MENSAGEM DO MENU + MENSAGEM ANTERIOR
+
+
+			// PLANOS:
+			// - CRIAR UM ARQUIVO PRA CADA OPÇÃO
+			//		ASSIM FICARÁ MELHOR PARA O USUARIO COLOCAR SUBMENU NA OPÇÃO
+			// - CRIAR UM SISTEMA QUE VERIFICA SE O USUARIO ESTAVA FAZENDO ALGO NA OPÇÃO SOBRE HISTORICO ESCOLAR
+			//		TIPO.... SE ELE ESTAVA LA E ACABOU O TEMPO, É ENVIADO UMA MENSAGEM MESMO ASSIM PARA SECRETARIA FALANDO QUE TINHA ALGUEM LA MAS NAO DEU TEMPO PARA ACABAR, TALVEZ O USUARIO ACABOU MAS NAO ENVIOU
 							
 
 			if (msg.startsWith('+')){
